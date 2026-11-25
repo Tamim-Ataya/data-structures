@@ -12,22 +12,31 @@ public class Entry {
 	
 	
 	
-	public Entry(int Key, String value) {
+	public Entry(int key, String value) {
 		this.key = key;
 		this.value = value;
 	}
 	
 	
-	private void setValue(Entry e, String value) {
+	public void setValue(Entry e, String value) {
 		e.value = value;
 	}
 	
-	private void setKey(Entry e, int key) {
+	public void setKey(Entry e, int key) {
 		e.key = key;
 	}
 	
-	private int getKey(Entry e) {
+	public int getKey(Entry e) {
 		return e.key;
 	}
-
+	
+	public String getValue(Entry e) {
+		return e.value;
+	}
+	
+	/*
+	 * public void updateKey(int k) {
+	 * 
+	 * }
+	 */
 }
