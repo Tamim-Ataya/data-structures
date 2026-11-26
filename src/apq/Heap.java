@@ -6,6 +6,8 @@ package apq;
 //This class handles heap methods insertions deletions of entries
 public class Heap{
 	Entry heap [] = new Entry[2];
+	boolean isMin = true;
+	
 	
 	public Heap(){
 		int heapSize = heap.length;
@@ -40,7 +42,19 @@ public class Heap{
 		return temp;
 	}
 	
-	
+	public Entry delete(Entry e) {
+		Entry temp;
+		//decide if min or max
+		if(isMin) {
+		temp = heap[e.getIndexMin(e)];
+		//delete then rebalance
+		}
+		else {
+		temp = heap[e.getIndexMax(e)];
+		//delete then reheap
+		}
+		return temp;
+	}
 	
 	
 	

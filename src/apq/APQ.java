@@ -22,7 +22,7 @@ public class APQ {
 	}
 	
 	public void remove(Entry e) {
-		heap.
-		
+		heap.delete(e);
 	}
+
 }

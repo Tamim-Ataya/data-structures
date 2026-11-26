@@ -34,6 +34,13 @@ public class Entry {
 		return e.value;
 	}
 	
+	public int getIndexMin(Entry e) {
+		return e.indexMin;
+	}
+	
+	public int getIndexMax(Entry e) {
+		return e.indexMax;
+	}
 	/*
 	 * public void updateKey(int k) {
 	 * 
