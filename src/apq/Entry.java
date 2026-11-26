@@ -1,5 +1,6 @@
 package apq;
 
+
 //Entry class will handle Entry objects. Each object has vars Key, Value, indexMin, indexMax
 //Accessor methods.
 
@@ -9,7 +10,6 @@ public class Entry {
 	private int key;
 	private String value;
 	private int indexMin, indexMax, indexLeftChild, indexRightChild;
-
 	
 	
 	
@@ -17,7 +17,6 @@ public class Entry {
 		this.key = key;
 		this.value = value;
 	}
-	
 	
 	public void setValue(Entry e, String value) {
 		e.value = value;

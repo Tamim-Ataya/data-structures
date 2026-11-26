@@ -4,6 +4,7 @@ package apq;
 //Toggle which switches the heap from a min to a max heap
 //initial creatio nwould require a specific declaration of the mode
 //This class handles heap methods insertions deletions of entries
+//Basically my heap only stores pointers to locations in memory which hold my entry objects
 public class Heap{
 	Entry heap [];
 	boolean isMin = true;

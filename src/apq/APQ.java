@@ -3,13 +3,14 @@ package apq;
 //main ADT i suppose still to be decided if i use one heap amd toggle it whenever necessary or have 2 heaps a min and max.
 //I think 1 heap only because having 2 heaps and preforming every operation on both is too much
 //2 heaps only better when actually using toggle operation dont know how many times though.
+//To access my entries data i need to first get them 
 
 public class APQ {
 	
 	public static void main(String args[]) {
-		APQ test = new APQ();
-		test.insert(1, "hello");
-		test.Top();
+	System.out.println("ff");
+		APQ apqs = new APQ();
+			apqs.insert(1, "dddd");
 	}
 	
 	Heap heap;
@@ -17,6 +18,7 @@ public class APQ {
 	public APQ() {
 		this.heap = new Heap();
 	}
+	
 	
 	public void toggle() {
 		//toggle heap min/max
@@ -32,7 +34,7 @@ public class APQ {
 		return e;
 	}
 	
-	public Entry Top() {
+	public Entry top() {
 		return heap.heap[0];
 	}
 	
