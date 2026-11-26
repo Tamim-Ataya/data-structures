@@ -8,7 +8,8 @@ public class Entry {
 
 	private int key;
 	private String value;
-	private int indexMin, indexMax;
+	private int indexMin, indexMax, indexLeftChild, indexRightChild;
+
 	
 	
 	
@@ -41,9 +42,5 @@ public class Entry {
 	public int getIndexMax(Entry e) {
 		return e.indexMax;
 	}
-	/*
-	 * public void updateKey(int k) {
-	 * 
-	 * }
-	 */
+	
 }

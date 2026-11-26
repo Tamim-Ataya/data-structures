@@ -5,13 +5,20 @@ package apq;
 //initial creatio nwould require a specific declaration of the mode
 //This class handles heap methods insertions deletions of entries
 public class Heap{
-	Entry heap [] = new Entry[2];
+	Entry heap [];
 	boolean isMin = true;
+	int indexLast;
+	boolean lastEmpty = true; 
+	boolean isEmpty = true;
+	int size;
 	
-	
-	public Heap(){
-		int heapSize = heap.length;
-			
+	public Heap() {
+		heap = new Entry [2];
+		indexLast = 0;
+	}
+	public Heap(int n) {
+		heap = new Entry [n];
+		indexLast = 0;
 	}
 	
 	public Entry[] toggle(boolean minHeap) {
@@ -22,12 +29,24 @@ public class Heap{
 	public Entry removeTop() {
 		Entry temp = heap[0];
 		//call remove(e)
+		
+		size--;
 		return temp;
 	}
-	public void insert(int k, String v) {
-		Entry entry = new Entry(k, v);
-		//add entry to the end of heap
+	public void insert(Entry e){
+		if(lastEmpty) {
+			heap[indexLast] = e;
+			indexLast ++;
+		}
+		else {
+			System.out.println("Heap is full. Doubling size now");
+			resize();
+			heap[indexLast] = e;
+			indexLast ++;
+		}
+		
 		//rebalance
+		size++;
 	}
 	
 	public Entry Top() {
@@ -35,27 +54,41 @@ public class Heap{
 	}
 	
 	public Entry remove(Entry e) {
-		Entry temp = e;
-		//access temps index from e.indexMin/Max
-		//remove it from heap
-		//rebalance
-		return temp;
-	}
-	
-	public Entry delete(Entry e) {
 		Entry temp;
 		//decide if min or max
 		if(isMin) {
 		temp = heap[e.getIndexMin(e)];
-		//delete then rebalance
+		//delete 
 		}
 		else {
 		temp = heap[e.getIndexMax(e)];
-		//delete then reheap
+		//delete
 		}
+		//rebalance
+		//access temps index from e.indexMin/Max
+		//remove it from heap
+		//rebalance
+		
+		size--;
 		return temp;
 	}
 	
+	public void resize() {
+		Entry [] bigger = new Entry[heap.length * 2];
+        for (int i = 0; i < heap.length; i++) {
+            bigger [i] = heap[i];
+        }
+        heap = bigger;	
+	}
+	
+	/*
+	 * public Heap mergeHeap(Heap currentHeap, Heap newHeap) { int sizeNewHeap =
+	 * currentHeap.size + newHeap.size; Heap mergedHeap = new Heap(sizeNewHeap);
+	 * 
+	 * 
+	 * 
+	 * //return newHeap; }
+	 */
 	
 	
 }
