@@ -11,7 +11,6 @@ public class Heap{
 	int indexLast;
 	boolean lastEmpty = true; 
 	boolean isEmpty = true;
-	int size;
 	
 	public Heap() {
 		heap = new Entry [2];
@@ -31,23 +30,33 @@ public class Heap{
 		Entry temp = heap[0];
 		//call remove(e)
 		
-		size--;
+		
 		return temp;
 	}
 	public void insert(Entry e){
+		
 		if(lastEmpty) {
 			heap[indexLast] = e;
-			indexLast ++;
+			e.setIndexMin(indexLast);
+			if(indexLast == heap.length-1)
+				lastEmpty = false;
 		}
 		else {
 			System.out.println("Heap is full. Doubling size now");
 			resize();
 			heap[indexLast] = e;
-			indexLast ++;
+			e.setIndexMin(indexLast);
+			lastEmpty = true;
+		
 		}
 		
-		//rebalance
-		size++;
+		upHeap(e);
+		indexLast ++;
+		
+		for(int i=0; i<heap.length;i++) {
+			if(heap[i] != null)
+			System.out.println(heap[i].getKey()+" key  " +heap[i].getIndexMin()+" index");
+		}
 	}
 	
 	public Entry Top() {
@@ -58,11 +67,11 @@ public class Heap{
 		Entry temp;
 		//decide if min or max
 		if(isMin) {
-		temp = heap[e.getIndexMin(e)];
+		temp = heap[e.getIndexMin()];
 		//delete 
 		}
 		else {
-		temp = heap[e.getIndexMax(e)];
+		temp = heap[e.getIndexMax()];
 		//delete
 		}
 		//rebalance
@@ -70,7 +79,6 @@ public class Heap{
 		//remove it from heap
 		//rebalance
 		
-		size--;
 		return temp;
 	}
 	
@@ -82,6 +90,24 @@ public class Heap{
         heap = bigger;	
 	}
 	
+	public void upHeap(Entry child) {
+		
+		do{if(child.getKey() < heap[(child.getIndexMin()-1)/2].getKey()){
+			System.out.println("iin");
+			swap(child, heap[(child.getIndexMin()-1)/2]);
+		}
+
+		}while (child.getKey() < heap[(child.getIndexMin()-1)/2].getKey());
+	}
+	
+	public void swap(Entry child, Entry parent) {
+		int indexChild = child.getIndexMin();
+		int indexParent = parent.getIndexMin();
+		heap[parent.getIndexMin()] = child;
+		heap[child.getIndexMin()] = parent;
+		child.setIndexMin(indexParent);
+		parent.setIndexMin(indexChild);
+	}
 	/*
 	 * public Heap mergeHeap(Heap currentHeap, Heap newHeap) { int sizeNewHeap =
 	 * currentHeap.size + newHeap.size; Heap mergedHeap = new Heap(sizeNewHeap);

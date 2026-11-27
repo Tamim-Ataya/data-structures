@@ -8,9 +8,14 @@ package apq;
 public class APQ {
 	
 	public static void main(String args[]) {
-	System.out.println("ff");
-		APQ apqs = new APQ();
-			apqs.insert(1, "dddd");
+		APQ test = new APQ();
+		test.insert(2, "one");
+		test.insert(5, "two");
+		test.insert(3, "two");
+		test.insert(4, "two");
+		test.insert(0, "two");
+
+		System.out.println(test.heap.heap[1].getKey());
 	}
 	
 	Heap heap;
@@ -35,6 +40,7 @@ public class APQ {
 	}
 	
 	public Entry top() {
+		System.out.println(heap.heap[0].getKey());
 		return heap.heap[0];
 	}
 	
@@ -44,15 +50,15 @@ public class APQ {
 	}
 
 	public int replaceKey(Entry e, int k) {
-		int oldKey = e.getKey(e);
-		e.setKey(e, k);
+		int oldKey = e.getKey();
+		e.setKey(k);
 		
 		return oldKey;
 	}
 	
 	public String replaceValue(Entry e, String v) {
-		String oldValue = e.getValue(e);
-		e.setValue(e, v);
+		String oldValue = e.getValue();
+		e.setValue(v);
 		
 		return oldValue;
 	}
@@ -72,7 +78,7 @@ public class APQ {
 	}
 	
 	public int size() {
-		return heap.size;
+		return heap.indexLast-1;
 	}
 	
 	public Entry peekAt(int n) {
